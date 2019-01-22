@@ -63,6 +63,10 @@ def Speak(): # ALL THE SPEECH RECOGNITION STUFF
         if "clear" in speech: # CLEAR THE SCREEN WHEN 'CLEAR' IS SAID
             Cls()
 
+        if "close" and "chrome" in speech: # CLOSE CHROME
+            os.system("taskkill /im chrome.exe /f")
+            print("Chrome tabs closed.")
+
         if "translate" in speech: # TRANSLATION
             from translate import Translator
     
