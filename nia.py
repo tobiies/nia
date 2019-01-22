@@ -30,6 +30,10 @@ def Cls(): # CLEAR SPEECH
 def ClsFirst(): # CLEAR SPEECH
     os.system('cls')
 
+def Shutdown(): # SHUTDOWN PC
+    print("Shutting down your PC.")
+    os.system('shutdown -s -t 0')
+
 ClsFirst()
 
 def Speak(): # ALL THE SPEECH RECOGNITION STUFF
@@ -62,6 +66,36 @@ def Speak(): # ALL THE SPEECH RECOGNITION STUFF
 
         if "clear" in speech: # CLEAR THE SCREEN WHEN 'CLEAR' IS SAID
             Cls()
+
+        if "shutdown" in speech: # SHUT DOWN
+
+            print("Are you sure you want to shutdown your PC?")
+
+            with mic as source:
+                print("Adjusting for ambient noise, please wait...") # TRIES TO TUNE OUT BACKGROUND NOISE
+                r.adjust_for_ambient_noise(source)
+                print("Nia's listening...\n")
+                audio = r.listen(source)
+
+            try:
+                speech = r.recognize_google(audio) # GOOGLE RECOGNIZES AUDIO
+                print('Nia thinks you said: {}'.format(speech))
+                time.sleep(1)
+                print()
+
+                if "yes" in speech:
+                    Shutdown()
+                if "yeah" in speech:
+                    Shutdown()
+                    
+            except sr.RequestError: # IF NIA CANNOT CONNECT TO THE API...
+                print("Sorry, Speech Recognition API is unavailable. Please check your network connection.\nReturning to commands...")
+                time.sleep(1)
+                print()
+            except sr.UnknownValueError: # IF YOUR SPEECH IS UNRECOGNIZABLE
+                print("Sorry, Nia couldn't understand your speech.")
+                time.sleep(1)
+                print()
 
         if "close" and "chrome" in speech: # CLOSE CHROME
             os.system("taskkill /im chrome.exe /f")
