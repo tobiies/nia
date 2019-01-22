@@ -11,8 +11,7 @@ def Install(package): # PACKAGE INSTALLER
     except ImportError:
         print("Installation of package failed.")
 
-def SpeechInstall(): # INSTALL SPEECH RECOGNITION PACKAGE
-    Install("SpeechRecognition")
+Install("SpeechRecognition")
+Install("Translate")
 
-SpeechInstall()
 time.sleep(2)
