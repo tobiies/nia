@@ -19,6 +19,9 @@ def Start():
     enter = input(random.choice(action))
     if enter == "":
         Speak()
+    else:
+        print("Please press Enter.\n")
+        Start()
         
 def Cls(): # CLEAR SPEECH
     os.system('cls')
@@ -54,8 +57,8 @@ def Speak(): # ALL THE SPEECH RECOGNITION STUFF
             time.sleep(1)
 
         if "help" in speech: # HELP
-            print(">>> Hello\n>>> Help\n>>> Clear - clear screen\n>>> YouTube - search YouTube videos and channels\n>>> Google - search Google\n>>> Bye - exit")
-            print("PLEASE NOTE: YOU DO NOT NEED TO SAY THESE WORDS ON THEIR OWN. YOU JUST NEED TO SIMPLY MENTION OF OF THEM IN A SENTENCE.")
+            print(">>> Hello\n>>> Help\n>>> Clear - clear screen\n>>> YouTube - search YouTube videos and channels\n>>> Google - search Google\n>>> Bye - exit\n")
+            print("PLEASE NOTE: You do not have to use the words on their own. You can also say a sentence including\nthe word and it should work fine.")
 
         if "clear" in speech: # CLEAR THE SCREEN WHEN 'CLEAR' IS SAID
             Cls()
