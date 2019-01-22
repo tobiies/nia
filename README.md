@@ -1,2 +1,2 @@
 # nia
-lightweight virtual personal assistant
+nia is a virtual personal assistant built in python
