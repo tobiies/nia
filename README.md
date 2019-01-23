@@ -4,9 +4,11 @@ A lightweight personal virtual assistant
 
 ## Features
 
-* Search the web
+* Search the web (and for YouTube videos)
 * Recognise spoken words
+* Watch random YouTube videos
 * Close Chrome tabs
+* Open Calculator
 * Translate sentences
 * Shutdown PC
 
