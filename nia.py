@@ -4,12 +4,14 @@ import time # USED DEAL WITH TIME
 import random # USED TO SELECT RANDOM THINGS
 from random import randint # USED TO SELECT NUMBERS
 import subprocess
+from subprocess import call
 import sys
 import os
 import webbrowser # USED TO OPEN WEBPAGES
 import speech_recognition as sr
 
 hellos = ["Hello!","What's up?","How's it going?","Hi!","Hey!"]
+byes = ["bye","goodbye","see you", "until next time","see you later"]
 bye = ["Bye!","See ya!", "Until next time...","See ya later!"]
 action = ["Press Enter to speak.","When you're ready to speak, press Enter.","Press Enter when you're ready to speak."]
 
@@ -23,16 +25,19 @@ def Start():
         print("Please press Enter.\n")
         Start()
         
-def Cls(): # CLEAR SPEECH
+def Cls(): # CLEAR SCREEN
     os.system('cls')
     Start()
 
-def ClsFirst(): # CLEAR SPEECH
+def ClsFirst(): # CLEAR SCREEN
     os.system('cls')
 
 def Shutdown(): # SHUTDOWN PC
     print("Shutting down your PC.")
     os.system('shutdown -s -t 0')
+
+def hasNumbers(inputString):
+    return any(char.isdigit() for char in inputString)
 
 ClsFirst()
 
@@ -61,15 +66,23 @@ def Speak(): # ALL THE SPEECH RECOGNITION STUFF
             time.sleep(1)
 
         if "help" in speech: # HELP
-            print(">>> Hello\n>>> Help\n>>> Clear - clear screen\n>>> YouTube - search YouTube videos and channels\n>>> Google - search Google\n>>> Bye - exit\n")
-            print("PLEASE NOTE: You do not have to use the words on their own. You can also say a sentence including\nthe word and it should work fine.")
+            print(">>> Hello\n>>> Help\n>>> Clear - clear screen\n>>> Calculat(e/or) - open calculator\n>>> Close Chrome - close Chrome tabs/windows\n>>> Translate - translate words or phrases\n>>> YouTube - search YouTube videos and channels\n>>> Google - search Google\n>>> Bye - exit\n")
+            print("PLEASE NOTE: You do not have to use the words on their own. You can also say a sentence including\nthe words and it should work fine.")
 
         if "clear" in speech: # CLEAR THE SCREEN WHEN 'CLEAR' IS SAID
             Cls()
 
-        if "shutdown" in speech: # SHUT DOWN
+        if "calculate" in speech: # OPEN CALCULATOR
+            print("Opening Calculator...")
+            call(["calc.exe"])
 
-            print("Are you sure you want to shutdown your PC?")
+        if "calculator" in speech: # OPEN CALCULATOR
+            print("Opening Calculator...")
+            call(["calc.exe"])
+
+        if "shutdown" in speech: # SHUT DOWN
+            print("Are you sure you want to shutdown your PC? Yes or No?")
+            time.sleep(1)
 
             with mic as source:
                 print("Adjusting for ambient noise, please wait...") # TRIES TO TUNE OUT BACKGROUND NOISE
@@ -253,7 +266,7 @@ def Speak(): # ALL THE SPEECH RECOGNITION STUFF
                 time.sleep(1)
                 print()
 
-        if "bye" in speech: # EXIT IF USER SAYS 'BYE'
+        if speech == any(bye): # EXIT IF USER SAYS 'BYE'
             print(random.choice(bye))
             time.sleep(2)
             exit()
