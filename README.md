@@ -6,7 +6,6 @@ A lightweight personal virtual assistant
 
 * Search the web (and for YouTube videos)
 * Recognise spoken words
-* Watch random YouTube videos
 * Close Chrome tabs
 * Open Calculator
 * Translate sentences
