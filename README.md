@@ -1,6 +1,6 @@
 # Nia
 
-A lightweight personal virtual assistant
+A lightweight personal virtual assistant. Currently it's still being worked on, so watch for updates.
 
 ## Features
 
@@ -37,7 +37,3 @@ Please just don't do anything dumb, I guess.
 ## License
 
 This project has no license, as of yet.
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used.
